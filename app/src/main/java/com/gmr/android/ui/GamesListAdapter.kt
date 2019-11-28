@@ -25,15 +25,18 @@ class GamesListAdapter : PagedListAdapter<Results, GamesListAdapter.GamesListAda
         }
 
         var gameNameTextView : TextView
-        var gameReleaseDateTextview : TextView
+        var gameRatingTextview : TextView
+        var gameRatingTopTextview : TextView
         var gamePlatformsTextview : TextView
         var gameGenresTextview : TextView
         var gameImageView : ImageView
 
         init {
             itemView.tag = this
+
             gameNameTextView = itemView.findViewById(R.id.game_name_textView)
-            gameReleaseDateTextview = itemView.findViewById(R.id.game_release_date_textView)
+            gameRatingTextview = itemView.findViewById(R.id.game_rating_textView)
+            gameRatingTopTextview = itemView.findViewById(R.id.game_rating_top_textView)
             gamePlatformsTextview = itemView.findViewById(R.id.game_platforms_textView)
             gameGenresTextview = itemView.findViewById(R.id.game_genres_textView)
             gameImageView = itemView.findViewById(R.id.game_image)
@@ -48,11 +51,19 @@ class GamesListAdapter : PagedListAdapter<Results, GamesListAdapter.GamesListAda
     }
     override fun onBindViewHolder(holder: GamesListAdapterViewHolder, position: Int) {
         val game: Results? = mGames?.get(position)
+        var genresText = ""
+        var platformtext = ""
+
+        if (game != null) {
+            for (element in game.genres){ genresText += element.name + "/"}
+            for(element in game.parent_platforms){ platformtext += element.platform.name + "/"}
+        }
 
         holder.gameNameTextView.text = game?.name
-        holder.gameReleaseDateTextview.text = game?.released
-        holder.gamePlatformsTextview.text = game?.parent_platforms.toString()
-        holder.gameGenresTextview.text = game?.genres.toString()
+        holder.gameRatingTextview.text = game?.rating.toString()
+        holder.gameRatingTopTextview.text = game?.rating_top.toString()
+        holder.gamePlatformsTextview.text = platformtext
+        holder.gameGenresTextview.text = genresText
         Picasso.get().load(game?.background_image).into(holder.gameImageView)
 
     }

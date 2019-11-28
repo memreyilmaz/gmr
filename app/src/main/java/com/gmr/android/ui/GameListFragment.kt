@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.gmr.android.R
 import com.gmr.android.viewmodel.ViewModelFactory
@@ -20,6 +21,7 @@ class GameListFragment : DaggerFragment() {
     private lateinit var viewModel: SharedViewModel
     private lateinit var gamesListAdapter: GamesListAdapter
     lateinit var gamesRecyclerView : RecyclerView
+    var isTablet:Boolean? = null
 
     @Inject
     internal lateinit var viewModelFactory: ViewModelFactory
@@ -34,6 +36,8 @@ class GameListFragment : DaggerFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+        isTablet = context?.resources?.getBoolean(R.bool.isTablet)
 
         val view = inflater.inflate(R.layout.fragment_game_list, container, false)
         gamesRecyclerView = view.findViewById(R.id.game) as RecyclerView
@@ -50,11 +54,18 @@ class GameListFragment : DaggerFragment() {
 
         viewModel.gamesList.observe(this, Observer {
             gamesListAdapter.setGameData(it)
+            if(isTablet == true){
+                gamesListAdapter.getGameAtPosition(0)?.let { it1 -> viewModel.setSelectedGame(it1) }
+            }
         })
 
         gamesListAdapter.setOnItemClickListener(object:
             GamesListAdapter.ClickListener {
             override fun onItemClick(v: View, pos: Int) {
+                viewModel.setSelectedGame(gamesListAdapter.getGameAtPosition(pos)!!)
+                if(isTablet == false){
+                    view?.findNavController()?.navigate(R.id.action_gameListFragment_to_gameDetailFragment)
+                }
             }
         })
     }

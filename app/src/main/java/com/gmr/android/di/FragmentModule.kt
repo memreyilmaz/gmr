@@ -1,5 +1,6 @@
 package com.gmr.android.di
 
+import com.gmr.android.ui.GameDetailFragment
 import com.gmr.android.ui.GameListFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -10,6 +11,6 @@ abstract class FragmentModule {
     @ContributesAndroidInjector
     abstract fun contributeListFragment(): GameListFragment
 
-   // @ContributesAndroidInjector
-   // abstract fun contributeDetailFragment(): GameDetailFragment
+    @ContributesAndroidInjector
+    abstract fun contributeDetailFragment(): GameDetailFragment
 }
