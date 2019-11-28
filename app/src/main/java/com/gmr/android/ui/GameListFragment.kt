@@ -1,4 +1,4 @@
-package com.gmr.android
+package com.gmr.android.ui
 
 
 import android.os.Bundle
@@ -8,9 +8,11 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
+import com.gmr.android.R
 import com.gmr.android.viewmodel.ViewModelFactory
 import com.gmr.android.viewmodel.SharedViewModel
 import dagger.android.support.DaggerFragment
+import timber.log.Timber
 import javax.inject.Inject
 
 class GameListFragment : DaggerFragment() {
@@ -35,6 +37,7 @@ class GameListFragment : DaggerFragment() {
 
         val view = inflater.inflate(R.layout.fragment_game_list, container, false)
         gamesRecyclerView = view.findViewById(R.id.game) as RecyclerView
+
         initAdapter()
 
         return view
@@ -46,10 +49,11 @@ class GameListFragment : DaggerFragment() {
         gamesRecyclerView.adapter = gamesListAdapter
 
         viewModel.gamesList.observe(this, Observer {
-            gamesListAdapter.setGameData(it.results)
+            gamesListAdapter.setGameData(it)
         })
 
-        gamesListAdapter.setOnItemClickListener(object: GamesListAdapter.ClickListener{
+        gamesListAdapter.setOnItemClickListener(object:
+            GamesListAdapter.ClickListener {
             override fun onItemClick(v: View, pos: Int) {
             }
         })

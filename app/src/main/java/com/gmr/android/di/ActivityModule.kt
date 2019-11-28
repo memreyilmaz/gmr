@@ -1,6 +1,6 @@
 package com.gmr.android.di
 
-import com.gmr.android.MainActivity
+import com.gmr.android.ui.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

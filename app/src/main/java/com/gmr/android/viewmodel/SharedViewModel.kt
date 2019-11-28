@@ -1,29 +1,22 @@
 package com.gmr.android.viewmodel
 
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.gmr.android.RAWGRepository
-import com.gmr.android.data.Games
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
-import timber.log.Timber
+import androidx.paging.PagedList
+import com.gmr.android.data.RAWGRepository
+import com.gmr.android.data.Results
+import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 class SharedViewModel @Inject
 constructor(private val repository: RAWGRepository): ViewModel(){
 
-   val gamesList: MutableLiveData<Games> = MutableLiveData()
+    lateinit var gamesList : LiveData<PagedList<Results>>
 
-    init{
-        repository.getGames()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe{
-                Timber.i("it.data" + it.data)
-                gamesList.value = it.data
-
-                Timber.i("asdasd" + it.message)
-                Timber.i("asdasd" + it.status)
-            }
+    init {
+        getGames()
+    }
+    fun getGames() {
+        gamesList = repository.getGames()
     }
 }

@@ -1,6 +1,6 @@
 package com.gmr.android.di
 
-import com.gmr.android.GameListFragment
+import com.gmr.android.ui.GameListFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

@@ -1,7 +1,7 @@
-package com.gmr.android
+package com.gmr.android.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.gmr.android.R
 import dagger.android.support.DaggerAppCompatActivity
 
 class MainActivity : DaggerAppCompatActivity() {
