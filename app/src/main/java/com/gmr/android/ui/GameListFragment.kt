@@ -10,17 +10,18 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.gmr.android.R
+import com.gmr.android.data.NetworkState
 import com.gmr.android.viewmodel.ViewModelFactory
 import com.gmr.android.viewmodel.SharedViewModel
 import dagger.android.support.DaggerFragment
-import timber.log.Timber
+import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class GameListFragment : DaggerFragment() {
 
     private lateinit var viewModel: SharedViewModel
     private lateinit var gamesListAdapter: GamesListAdapter
-    lateinit var gamesRecyclerView : RecyclerView
+    private lateinit var gamesRecyclerView : RecyclerView
     var isTablet:Boolean? = null
 
     @Inject
@@ -29,9 +30,7 @@ class GameListFragment : DaggerFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
-        viewModel = activity?.run {
-            ViewModelProviders.of(this, viewModelFactory).get(SharedViewModel::class.java)
-        } ?: throw Exception("Invalid Activity")
+        viewModel = getViewModel()
     }
 
     override fun onCreateView(
@@ -43,17 +42,27 @@ class GameListFragment : DaggerFragment() {
         gamesRecyclerView = view.findViewById(R.id.game) as RecyclerView
 
         initAdapter()
+     //   setViews()
 
         return view
 
     }
+
+   /* private fun setViews() {
+        viewModel.networkState.observe(this, Observer {
+            progressBar.visibility =
+                if (viewModel.listIsEmpty() && it == NetworkState.LOADING) View.VISIBLE else View.GONE
+            no_internet_textView.visibility =
+                if (viewModel.listIsEmpty() && it == NetworkState.ERROR) View.VISIBLE else View.GONE
+            if (!viewModel.listIsEmpty()){gamesListAdapter.setNetworkState}
+        })    }*/
 
     private fun initAdapter() {
         gamesListAdapter = GamesListAdapter()
         gamesRecyclerView.adapter = gamesListAdapter
 
         viewModel.gamesList.observe(this, Observer {
-            gamesListAdapter.setGameData(it)
+            gamesListAdapter.submitList(it)
             if(isTablet == true){
                 gamesListAdapter.getGameAtPosition(0)?.let { it1 -> viewModel.setSelectedGame(it1) }
             }
@@ -68,5 +77,11 @@ class GameListFragment : DaggerFragment() {
                 }
             }
         })
+    }
+
+    private fun getViewModel() : SharedViewModel {
+        return activity?.run {
+            ViewModelProviders.of(this, viewModelFactory).get(SharedViewModel::class.java)
+        } ?: throw Exception("Invalid Activity")
     }
 }

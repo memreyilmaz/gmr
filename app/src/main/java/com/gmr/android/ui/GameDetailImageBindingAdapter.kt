@@ -1,7 +1,5 @@
 package com.gmr.android.ui
 
-import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.gmr.android.R

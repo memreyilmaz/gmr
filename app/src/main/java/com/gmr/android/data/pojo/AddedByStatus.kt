@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 /*	This Class Created and Kept For Possible Future Usages
 	Currently not in Usage
  */
-data class Added_by_status (
+data class AddedByStatus (
 
 	@SerializedName("yet") val yet : Int,
 	@SerializedName("owned") val owned : Int,

@@ -18,7 +18,7 @@ data class Results (
 	//@SerializedName("ratings_count") val ratings_count : Int,
 	//@SerializedName("reviews_text_count") val reviews_text_count : Int,
 	//@SerializedName("added") val added : Int,
-	//@SerializedName("added_by_status") val added_by_status : Added_by_status,
+	//@SerializedName("added_by_status") val added_by_status : AddedByStatus,
 	//@SerializedName("metacritic") val metacritic : Int,
 	//@SerializedName("playtime") val playtime : Int,
 	//@SerializedName("suggestions_count") val suggestions_count : Int,
@@ -27,9 +27,9 @@ data class Results (
 	@SerializedName("saturated_color") val saturated_color : String,
 	@SerializedName("dominant_color") val dominant_color : String,
 	//@SerializedName("platforms") val platforms : List<Platforms>,
-	@SerializedName("parent_platforms") val parent_platforms : List<Parent_platforms>,
+	@SerializedName("parent_platforms") val parent_platforms : List<ParentPlatforms>,
 	@SerializedName("genres") val genres : List<Genres>,
 	//@SerializedName("stores") val stores : List<Stores>,
 	//@SerializedName("clip") val clip : Clip,
-	@SerializedName("short_screenshots") val short_screenshots : List<Short_screenshots>
+	@SerializedName("short_screenshots") val short_screenshots : List<ShortScreenshots>
 )

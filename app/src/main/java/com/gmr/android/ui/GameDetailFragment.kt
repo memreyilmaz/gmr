@@ -1,6 +1,5 @@
 package com.gmr.android.ui
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +17,7 @@ import javax.inject.Inject
 
 class GameDetailFragment : DaggerFragment() {
     private lateinit var viewModel: SharedViewModel
-    lateinit var binding: FragmentGameDetailBinding
+    private lateinit var binding: FragmentGameDetailBinding
 
     @Inject
     internal lateinit var viewModelFactory: ViewModelFactory
@@ -26,11 +25,8 @@ class GameDetailFragment : DaggerFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
-        viewModel = activity?.run {
-            ViewModelProviders.of(this, viewModelFactory).get(SharedViewModel::class.java)
-        } ?: throw Exception("Invalid Activity")
+        viewModel = getViewModel()
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -48,5 +44,11 @@ class GameDetailFragment : DaggerFragment() {
             binding.gameDetailGenresTextView.text = genresText
         })
         return binding.root
+    }
+
+    private fun getViewModel() : SharedViewModel {
+        return activity?.run {
+            ViewModelProviders.of(this, viewModelFactory).get(SharedViewModel::class.java)
+        } ?: throw Exception("Invalid Activity")
     }
 }

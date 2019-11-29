@@ -2,7 +2,7 @@ package com.gmr.android.data
 
 import com.google.gson.annotations.SerializedName
 
-data class Parent_platforms (
+data class ParentPlatforms (
 
 	@SerializedName("platform") val platform : Platform
 )

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -16,10 +15,11 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/game_detail_image"
+            android:id="@+id/game_detail_imageView"
             android:layout_width="match_parent"
             android:layout_height="160dp"
-            app:background_image="@{result.background_image}" />
+            app:background_image="@{result.background_image}"
+            android:contentDescription="@string/gameImage" />
 
         <TextView
             android:id="@+id/game_detail_name_textView"

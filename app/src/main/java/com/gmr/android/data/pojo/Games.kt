@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName
 data class Games (
 
 	//@SerializedName("count") val count : Int,
-	//@SerializedName("next") val next : String,
+	@SerializedName("next") val next : String,
 	//@SerializedName("previous") val previous : String,
 	@SerializedName("results") val results : List<Results>,
 	//@SerializedName("seo_title") val seo_title : String,

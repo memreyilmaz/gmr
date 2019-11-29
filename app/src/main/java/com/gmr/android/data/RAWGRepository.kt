@@ -4,19 +4,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
+import com.android.pixabay.model.paging.GameDataSource
 import com.android.pixabay.model.paging.GameDataSourceFactory
-import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class RAWGRepository @Inject constructor (private val networkService: RAWGApiInterface){
-    lateinit var gamesDataSourceFactory: GameDataSourceFactory
+class RAWGRepository @Inject constructor (private val apiService: RAWGApiInterface){
+    private lateinit var gamesDataSourceFactory: GameDataSourceFactory
     lateinit var gamesList: LiveData<PagedList<Results>>
-    private val subscriptions = CompositeDisposable()
+    private val compositeDisposable = CompositeDisposable()
 
     fun getGames(): LiveData<PagedList<Results>> {
-     gamesDataSourceFactory = GameDataSourceFactory(subscriptions, networkService)
+     gamesDataSourceFactory = GameDataSourceFactory(compositeDisposable, apiService)
 
      val config = PagedList.Config.Builder()
          .setPageSize(PAGE_SIZE)
@@ -26,11 +25,10 @@ class RAWGRepository @Inject constructor (private val networkService: RAWGApiInt
 
         gamesList = LivePagedListBuilder<Int, Results>(gamesDataSourceFactory, config).build()
         return gamesList
-
     }
 
-    companion object {
-        private const val PAGE_SIZE = 20
-        private const val ENABLE_PLACEHOLDERS = false
+    fun getNetworkState(): LiveData<NetworkState> {
+        return Transformations.switchMap<GameDataSource, NetworkState>(
+            gamesDataSourceFactory.sourceLiveData, GameDataSource::networkState)
     }
 }

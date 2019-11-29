@@ -46,7 +46,7 @@ class ApiModule{
                                     // networkInterceptor: NetworkInterceptor
     ): OkHttpClient {
         val loggingInterceptor = HttpLoggingInterceptor()
-        loggingInterceptor.level = HttpLoggingInterceptor.Level.HEADERS
+        loggingInterceptor.level = HttpLoggingInterceptor.Level.BASIC
 
         val httpClient = OkHttpClient.Builder()
         httpClient.cache(cache)
