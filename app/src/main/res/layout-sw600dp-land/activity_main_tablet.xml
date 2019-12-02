@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,21 +15,26 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:theme="@style/ToolbarStyle" />
-
     </com.google.android.material.appbar.AppBarLayout>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize">
+        android:layout_marginTop="?attr/actionBarSize"
+        android:baselineAligned="false">
 
         <fragment
-            android:id="@+id/navHostFragment"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="match_parent"
+            android:id="@+id/gameList_fragment_on_tablet"
+            android:name="com.gmr.android.ui.GameListFragment"
+            android:layout_width="@dimen/layout_width_0"
             android:layout_height="match_parent"
-            app:defaultNavHost="true"
-            app:navGraph="@navigation/navigation" />
-    </FrameLayout>
+            android:layout_weight="2" />
 
+        <fragment
+            android:id="@+id/gameDetail_fragment_on_tablet"
+            android:name="com.gmr.android.ui.GameDetailFragment"
+            android:layout_width="@dimen/layout_width_0"
+            android:layout_height="match_parent"
+            android:layout_weight="3" />
+    </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

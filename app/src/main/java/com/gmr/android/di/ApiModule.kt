@@ -2,7 +2,7 @@ package com.gmr.android.di
 
 import android.app.Application
 import com.gmr.android.data.BASE_URL
-import com.gmr.android.data.RAWGApiInterface
+import com.gmr.android.data.repository.RAWGApiInterface
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -34,24 +34,15 @@ class ApiModule{
         return Cache(httpCacheDirectory, cacheSize)
     }
 
-  /*  @Provides
-    @Singleton
-    internal fun provideNetworkInterceptor(application: Application): NetworkInterceptor {
-        return NetworkInterceptor(application.applicationContext)
-    }*/
-
     @Provides
     @Singleton
-    internal fun provideOkhttpClient(cache: Cache//,
-                                    // networkInterceptor: NetworkInterceptor
-    ): OkHttpClient {
+    internal fun provideOkhttpClient(cache: Cache): OkHttpClient {
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.level = HttpLoggingInterceptor.Level.BASIC
 
         val httpClient = OkHttpClient.Builder()
         httpClient.cache(cache)
         httpClient.addInterceptor(loggingInterceptor)
-       // httpClient.addNetworkInterceptor(networkInterceptor)
         return httpClient.build()
     }
 

@@ -8,15 +8,19 @@
     <fragment
         android:id="@+id/gameListFragment"
         android:name="com.gmr.android.ui.GameListFragment"
-        android:label="fragment_game_list"
         tools:layout="@layout/fragment_game_list" >
         <action
             android:id="@+id/action_gameListFragment_to_gameDetailFragment"
-            app:destination="@id/gameDetailFragment" />
+            app:destination="@id/gameDetailFragment"
+            app:popUpToInclusive="false" app:launchSingleTop="false"/>
     </fragment>
     <fragment
         android:id="@+id/gameDetailFragment"
         android:name="com.gmr.android.ui.GameDetailFragment"
-        android:label="fragment_game_detail"
-        tools:layout="@layout/fragment_game_detail" />
+        tools:layout="@layout/fragment_game_detail" >
+        <action
+            android:id="@+id/action_gameDetailFragment_to_gameListFragment"
+            app:destination="@id/gameListFragment"
+            app:popUpTo="@+id/gameListFragment" />
+    </fragment>
 </navigation>

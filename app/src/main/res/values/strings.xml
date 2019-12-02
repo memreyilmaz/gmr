@@ -1,8 +1,20 @@
 <resources>
-    <string name="app_name">gmr</string>
+    <string name="app_name">GMR</string>
 
-    <string name="rating">Rating:</string>
-    <string name="releaseDate">Release Date:</string>
-    <string name="gameImage">Game Image</string>
-
+    <string name="rating">Rating: </string>
+    <string name="release_date">Release Date: </string>
+    <string name="game_image">Game Image</string>
+    <string name="no_connection">Please Check Your Internet Connection!</string>
+    <string name="windows">Windows Logo</string>
+    <string name="playstation">PlayStation Logo</string>
+    <string name="xbox">XBox Logo</string>
+    <string name="nintendo">Nintendo Logo</string>
+    <string name="mac">Mac Logo</string>
+    <string name="android">Android Logo</string>
+    <string name="ios">IOS Logo</string>
+    <string name="web">Web Logo</string>
+    <string name="linux">Linux logo</string>
+    <string name="retry">Retry</string>
+    <string name="platforms">Platforms: </string>
+    <string name="genres">Genres: </string>
 </resources>

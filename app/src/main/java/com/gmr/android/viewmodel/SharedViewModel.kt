@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.PagedList
 import com.gmr.android.data.NetworkState
-import com.gmr.android.data.RAWGRepository
+import com.gmr.android.data.repository.RAWGRepository
 import com.gmr.android.data.Results
 import javax.inject.Inject
 
@@ -27,5 +27,9 @@ class SharedViewModel @Inject constructor(private val repository: RAWGRepository
 
     fun listIsEmpty(): Boolean {
         return gamesList.value?.isEmpty() ?: true
+    }
+
+    fun retry() {
+        repository.retry()
     }
 }

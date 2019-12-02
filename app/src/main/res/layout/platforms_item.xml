@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/platform_windows_imageView"
+        style="@style/PlatformImageViewStyle"
+        android:contentDescription="@string/windows"
+        android:src="@drawable/ic_windows_logo" />
+
+    <ImageView
+        android:id="@+id/platform_playStation_imageView"
+        style="@style/PlatformImageViewStyle"
+        android:contentDescription="@string/playstation"
+        android:src="@drawable/ic_playstation_logo" />
+
+    <ImageView
+        android:id="@+id/platform_xBox_imageView"
+        style="@style/PlatformImageViewStyle"
+        android:contentDescription="@string/xbox"
+        android:src="@drawable/ic_xbox_logo" />
+
+    <ImageView
+        android:id="@+id/platform_nintendo_imageView"
+        style="@style/PlatformImageViewStyle"
+        android:contentDescription="@string/nintendo"
+        android:src="@drawable/ic_nintendo_logo" />
+
+    <ImageView
+        android:id="@+id/platform_mac_imageView"
+        style="@style/PlatformImageViewStyle"
+        android:contentDescription="@string/mac"
+        android:src="@drawable/ic_mac_logo" />
+
+    <ImageView
+        android:id="@+id/platform_android_imageView"
+        style="@style/PlatformImageViewStyle"
+        android:contentDescription="@string/android"
+        android:src="@drawable/ic_android_logo" />
+
+    <ImageView
+        android:id="@+id/platform_ios_imageView"
+        style="@style/PlatformImageViewStyle"
+        android:contentDescription="@string/ios"
+        android:src="@drawable/ic_ios_logo" />
+
+    <ImageView
+        android:id="@+id/platform_web_imageView"
+        style="@style/PlatformImageViewStyle"
+        android:contentDescription="@string/web"
+        android:src="@drawable/ic_web_logo" />
+
+    <ImageView
+        android:id="@+id/platform_linux_imageView"
+        style="@style/PlatformImageViewStyle"
+        android:contentDescription="@string/linux"
+        android:src="@drawable/ic_linux_logo" />
+
+</LinearLayout>

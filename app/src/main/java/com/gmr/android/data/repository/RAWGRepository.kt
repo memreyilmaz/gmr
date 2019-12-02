@@ -1,4 +1,4 @@
-package com.gmr.android.data
+package com.gmr.android.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
@@ -6,6 +6,10 @@ import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.android.pixabay.model.paging.GameDataSource
 import com.android.pixabay.model.paging.GameDataSourceFactory
+import com.gmr.android.data.ENABLE_PLACEHOLDERS
+import com.gmr.android.data.NetworkState
+import com.gmr.android.data.PAGE_SIZE
+import com.gmr.android.data.Results
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
@@ -30,5 +34,8 @@ class RAWGRepository @Inject constructor (private val apiService: RAWGApiInterfa
     fun getNetworkState(): LiveData<NetworkState> {
         return Transformations.switchMap<GameDataSource, NetworkState>(
             gamesDataSourceFactory.sourceLiveData, GameDataSource::networkState)
+    }
+    fun retry() {
+        gamesDataSourceFactory.sourceLiveData.value?.retry()
     }
 }
