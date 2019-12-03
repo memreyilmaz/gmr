@@ -8,15 +8,17 @@ import android.widget.Button
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.gmr.android.R
 import com.gmr.android.data.NetworkState
 import com.gmr.android.ui.adapter.GamesListAdapter
-import com.gmr.android.viewmodel.ViewModelFactory
 import com.gmr.android.viewmodel.SharedViewModel
+import com.gmr.android.viewmodel.ViewModelFactory
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_game_list.*
 import javax.inject.Inject
+
 
 class GameListFragment : DaggerFragment() {
 
@@ -42,6 +44,8 @@ class GameListFragment : DaggerFragment() {
 
         val view = inflater.inflate(R.layout.fragment_game_list, container, false)
         gamesRecyclerView = view.findViewById(R.id.game_item_recyclerView) as RecyclerView
+        gamesRecyclerView.addItemDecoration(DividerItemDecoration(
+                gamesRecyclerView.context, DividerItemDecoration.VERTICAL))
         retryButton = view.findViewById(R.id.retry_button) as Button
 
         initAdapter()

@@ -22,13 +22,13 @@ GameItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             for(element in game.parent_platforms){ platformtext += element.platform.slug + "/"}
         }
         itemView.game_name_textView.text = game?.name
-        itemView.game_rating_textView.text = game?.rating.toString()
-        itemView.game_rating_top_textView.text = game?.rating_top.toString()
         itemView.game_genres_textView.text = genresText
         Picasso.get()
             .load(game?.background_image)
             .placeholder(R.drawable.ic_rawg_logo)
             .error(R.drawable.ic_rawg_logo)
+            .fit()
+            .centerInside()
             .into(itemView.game_image)
 
         //Reorganize ASAP

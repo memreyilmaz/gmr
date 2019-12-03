@@ -20,16 +20,16 @@
         <ImageView
             android:id="@+id/game_detail_imageView"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="wrap_content"
             android:contentDescription="@string/game_image"
+            android:paddingTop="@dimen/padding_16"
             app:background_image="@{result.background_image}"
             app:error="@{@drawable/ic_rawg_logo}" />
 
         <TextView
             android:id="@+id/game_detail_name_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/padding_8"
+            style="@style/GameNameTextViewStyle"
+            android:layout_gravity="center"
             android:text="@{`` + result.name}" />
 
         <LinearLayout
@@ -39,20 +39,17 @@
 
             <TextView
                 android:id="@+id/game_detail_ratingText_textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/ExplanationTextViewStyle"
                 android:text="@string/rating" />
 
             <TextView
                 android:id="@+id/game_detail_rating_textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{`` + result.rating + '/'}" />
+                style="@style/TextViewStyle"
+                android:text="@{` ` + result.rating + ' ' + '/'}" />
 
             <TextView
                 android:id="@+id/game_detail_rating_top_textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/TextViewStyle"
                 android:text="@{` ` + result.rating_top}" />
         </LinearLayout>
 
@@ -63,39 +60,37 @@
 
             <TextView
                 android:id="@+id/game_detail_release_dateText_textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/ExplanationTextViewStyle"
                 android:text="@string/release_date" />
 
             <TextView
                 android:id="@+id/game_detail_release_date_textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{`` + result.released}" />
+                style="@style/TextViewStyle"
+                android:text="@{` ` + result.released.replace('-','/')}" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/game_detail_platformsText_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/platforms"/>
+            style="@style/ExplanationTextViewStyle"
+            android:text="@string/platforms" />
 
         <include
             android:id="@+id/detail_platforms_layout"
-            layout="@layout/platforms_item"/>
+            layout="@layout/platforms_item" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-        <TextView
-            android:id="@+id/game_detail_genresText_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/genres"/>
-        <TextView
-            android:id="@+id/game_detail_genres_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/game_detail_genresText_textView"
+                style="@style/ExplanationTextViewStyle"
+                android:text="@string/genres" />
+
+            <TextView
+                android:id="@+id/game_detail_genres_textView"
+                style="@style/TextViewStyle" />
         </LinearLayout>
     </LinearLayout>
 

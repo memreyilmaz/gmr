@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".ui.MainActivity">
+
+<com.google.android.material.appbar.AppBarLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:theme="@style/AppTheme.AppBarOverlay">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/main_activity_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:theme="@style/ToolbarStyle" />
+</com.google.android.material.appbar.AppBarLayout>
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MainActivity">
+    android:layout_marginTop="?attr/actionBarSize"
+    android:baselineAligned="false">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/main_activity_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:theme="@style/ToolbarStyle" />
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <fragment
+        android:id="@+id/gameList_fragment_on_tablet"
+        android:name="com.gmr.android.ui.GameListFragment"
+        android:layout_width="@dimen/layout_width_0"
         android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:baselineAligned="false">
+        android:layout_weight="2" />
 
-        <fragment
-            android:id="@+id/gameList_fragment_on_tablet"
-            android:name="com.gmr.android.ui.GameListFragment"
-            android:layout_width="@dimen/layout_width_0"
-            android:layout_height="match_parent"
-            android:layout_weight="2" />
-
-        <fragment
-            android:id="@+id/gameDetail_fragment_on_tablet"
-            android:name="com.gmr.android.ui.GameDetailFragment"
-            android:layout_width="@dimen/layout_width_0"
-            android:layout_height="match_parent"
-            android:layout_weight="3" />
-    </LinearLayout>
+    <fragment
+        android:id="@+id/gameDetail_fragment_on_tablet"
+        android:name="com.gmr.android.ui.GameDetailFragment"
+        android:layout_width="@dimen/layout_width_0"
+        android:layout_height="match_parent"
+        android:layout_weight="3" />
+</LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

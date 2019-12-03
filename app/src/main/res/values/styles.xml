@@ -6,9 +6,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="ToolbarStyle" parent="@style/ThemeOverlay.AppCompat.ActionBar">
         <item name="colorControlNormal">@android:color/white</item>
@@ -22,7 +22,31 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:visibility">gone</item>
         <item name="android:layout_gravity">center_vertical</item>
-        <item name="android:padding">@dimen/padding_4</item>
+        <item name="android:padding">@dimen/padding_2</item>
+    </style>
+
+    <style name="TextViewStyle" parent="TextAppearance.AppCompat">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">@dimen/detail_text_size</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:paddingTop">@dimen/padding_4</item>
+        <item name="android:paddingBottom">@dimen/padding_2</item>
+    </style>
+
+    <style name="ExplanationTextViewStyle" parent="TextViewStyle">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="GameNameTextViewStyle" parent="ExplanationTextViewStyle">
+        <item name="android:textSize">@dimen/name_text_size</item>
+        <item name="android:paddingTop">@dimen/padding_8</item>
+    </style>
+
+    <style name="GameListNameTextViewStyle" parent="TextViewStyle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">@dimen/padding_0</item>
+        <item name="android:paddingBottom">@dimen/padding_0</item>
     </style>
 
 </resources>

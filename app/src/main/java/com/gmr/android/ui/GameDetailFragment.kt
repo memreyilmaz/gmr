@@ -36,7 +36,7 @@ class GameDetailFragment : DaggerFragment() {
         viewModel.selectedGame.observe(this, Observer<Results> {
             binding.result = it
             var platformtext = ""
-            var genresText = ""
+            var genresText = " "
 
             for(element in it.parent_platforms){ platformtext += element.platform.slug + "/" }
             for (element in it.genres){ genresText += element.name + " " }
@@ -54,7 +54,7 @@ class GameDetailFragment : DaggerFragment() {
         } ?: throw Exception("Invalid Activity")
     }
 
-    fun setPlatforms(platformtext:String){
+    private fun setPlatforms(platformtext:String){
         if (platformtext.contains("pc"))
             binding.detailPlatformsLayout.platform_windows_imageView.visibility =
                 View.VISIBLE else View.GONE

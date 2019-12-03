@@ -15,6 +15,8 @@ object GameDetailImageBindingAdapter {
                     .load(url)
                     .placeholder(R.drawable.ic_rawg_logo)
                     .error(error)
+                    .fit()
+                    .centerCrop()
                     .into(view)
         }
 }
